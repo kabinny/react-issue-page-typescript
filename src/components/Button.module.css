@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  align-items: center;
+  padding: 5px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+}
+
+.default {
+  font-size: 14px;
+  background-color: transparent;
+  color: black;
+}
+
+.green {
+  font-size: 14px;
+  background-color: green;
+  color: white;
+}

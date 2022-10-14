@@ -23,6 +23,7 @@
     ],
     "ignorePatterns": ["*.css"],
     "rules": {
+        "react/require-default-props": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
         "import/extensions": [
