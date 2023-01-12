@@ -1,8 +1,12 @@
 import Footer from '../components/Footer';
+import ListContainer from '../ListContainer';
 
 function Issue() {
   return (
-    <Footer />
+    <>
+      <ListContainer />
+      <Footer />
+    </>
   );
 }
 

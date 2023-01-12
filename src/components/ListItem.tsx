@@ -5,7 +5,7 @@ import ListItemLayout from './ListItemLayout';
 import Badge from './Badge';
 
 import styles from './ListItem.module.css';
-import { ListItem } from '../model/issues';
+import { ListItem as ListItemType } from '../model/issues';
 
 dayjs.extend(relativeTime);
 
@@ -13,7 +13,7 @@ interface Props {
   checked: boolean;
   onClickCheckBox: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClickTitle?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  data: ListItem;
+  data: ListItemType;
 }
 
 // eslint-disable-next-line max-len, prettier/prettier
