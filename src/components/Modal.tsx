@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import cx from 'clsx';
 
 import styles from './Modal.module.css';
+import { List } from '../model/issues';
 
 interface Props {
   opened: boolean;
   title: string;
   onClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  placeholder: string;
-  searchDataList: { name: string }[];
+  placeholder?: string;
+  searchDataList: List[];
   onClickCell: (value: Record<string, string>) => void;
 }
 export default function Modal({
