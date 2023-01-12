@@ -11,23 +11,23 @@ import OpenClosedFilters from './components/OpenClosedFilters';
 import { GITHUB_API } from './api';
 
 import styles from './ListContainer.module.css';
+import { ListItem as ListItemType } from './model/issues';
 
 export default function ListContainer() {
   const [inputValue, setInputValue] = useState('is:pr is:open');
   const [checked, setChecked] = useState(false);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<ListItemType[]>([]);
   const maxPage = 10;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const page = parseInt(searchParams.get('page') ?? '1', 10);
   const state = searchParams.get('state');
 
-  async function getData(params) {
-    const { data } = await axios.get(
-      `${GITHUB_API}/repos/facebook/react/issues`,
-      { params }
-    );
-    setList(data);
+  async function getData(params: URLSearchParams) {
+    const data = await axios.get(`${GITHUB_API}/repos/facebook/react/issues`, {
+      params,
+    });
+    setList(data.data);
   }
 
   // API 로 데이터로 받아오는 작업은 useEffect 안에 넣어야 한다.
@@ -51,7 +51,7 @@ export default function ListContainer() {
         </div>
         <OpenClosedFilters
           isOpenMode={state !== 'closed'}
-          onClickMode={(state) => setSearchParams({ state })}
+          onClickMode={(mode) => setSearchParams({ mode })}
         />
         <ListItemLayout className={styles.listFilter}>
           <ListFilter
@@ -69,7 +69,7 @@ export default function ListContainer() {
               key={listItem.id}
               data={listItem}
               checked={checked}
-              onClickCheckBox={() => setChecked((checked) => !checked)}
+              onClickCheckBox={() => setChecked((c) => !c)}
             />
           ))}
         </div>
@@ -78,8 +78,8 @@ export default function ListContainer() {
         <Pagination
           maxPage={maxPage}
           currentPage={page}
-          onClickPageButton={(pageNumber) =>
-            setSearchParams({ page: pageNumber })
+          onClick={(pageNumber) =>
+            setSearchParams({ page: pageNumber.toString() })
           }
         />
       </div>

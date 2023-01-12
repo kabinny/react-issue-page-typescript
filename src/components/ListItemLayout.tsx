@@ -3,10 +3,10 @@ import React from 'react';
 import styles from './ListItemLayout.module.css';
 
 interface Props {
-  checked: boolean;
-  onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+  onClick?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 export default function ListItemLayout({
   checked,
